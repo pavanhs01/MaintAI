@@ -1,0 +1,16 @@
+services:
+  triage:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      AI_MODE: ${AI_MODE:-demo}
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2}
+      DATABASE_PATH: /app/data/triage.db
+    volumes:
+      - triage_data:/app/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  triage_data:

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaintAI — Equipment Triage</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">M</div><div><b>MaintAI</b><small>MAINTENANCE INTELLIGENCE</small></div></div>
+  <div class="nav-label">WORKSPACE</div>
+  <button class="nav active" data-view="dashboard">▦ <span>Overview</span></button>
+  <button class="nav" data-view="issues">◉ <span>Issues & triage</span></button>
+  <button class="nav" data-view="workorders">▤ <span>Work orders</span></button>
+  <button class="nav" data-view="equipment">▥ <span>Equipment</span></button>
+  <button class="nav" data-view="knowledge">▧ <span>Knowledge base</span></button>
+  <div class="sidebar-bottom"><div class="avatar">DT</div><div><b>Demo Technician</b><small>Local demo workspace</small></div></div>
+</aside>
+<main>
+<header class="topbar"><div><span class="eyebrow">OPERATIONS / TRIAGE</span><h1 id="page-title">Overview</h1></div>
+<div class="top-actions"><span class="local-pill"><i></i> Local environment</span><button class="btn primary" id="new-issue">＋ Report an issue</button></div></header>
+<div class="notice"><b>DEMO ENVIRONMENT</b><span>Illustrative manuals and thresholds only. Not certified for real industrial decisions. No equipment-control functions.</span></div>
+<section id="content"><div class="loading">Loading workspace…</div></section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop hidden" id="modal">
+ <div class="modal"><div class="modal-head"><div><span class="eyebrow">NEW REPORT</span><h2>Report equipment issue</h2></div><button class="icon-btn" id="close-modal" aria-label="Close">×</button></div>
+ <form id="issue-form">
+ <label>Equipment <select name="equipment_id" id="equipment-select" required></select></label>
+ <label>Issue description <textarea name="description" required minlength="5" placeholder="Describe the observed symptom, when it began, and operating conditions…"></textarea></label>
+ <div class="section-line"><b>Recent operating events</b><button type="button" class="btn small" id="add-event">＋ Add event</button></div>
+ <div id="events-list"></div>
+ <div class="section-line"><b>Optional sensor readings</b><button type="button" class="btn small" id="add-reading">＋ Add reading</button></div>
+ <p class="muted small-text">Use configured sensor keys: motor_temperature (C), vibration (mm/s), hydraulic_pressure (bar), motor_current (A). Demo thresholds are not safety limits.</p>
+ <div id="readings-list"></div>
+ <div class="modal-actions"><button type="button" class="btn" id="cancel-modal">Cancel</button><button type="submit" class="btn primary">Save report & run triage →</button></div>
+ </form></div>
+</div>
+<script src="/static/app.js"></script>
+</body></html>
