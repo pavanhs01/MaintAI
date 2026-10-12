@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: maintai-demo
+    runtime: docker
+    plan: free
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: AI_MODE
+        value: demo
+      - key: DATABASE_PATH
+        value: /tmp/triage.db

@@ -53,6 +53,12 @@ docker compose up --build
 
 Open http://localhost:8000. The SQLite database persists in the `triage_data` volume.
 
+## Render demo deployment
+
+The repository includes a Render Blueprint for a free demo web service. Connect the GitHub repository in Render and deploy the Blueprint from `render.yaml`. The container uses Render's assigned `PORT` and checks `/api/health`.
+
+The free service uses ephemeral storage, so SQLite data can be lost when the instance restarts or redeploys. The demo also has no real authentication; do not use it for sensitive data or operational decisions. Use an authenticated deployment and persistent database/storage before real users rely on it.
+
 ## Optional local model (no paid API)
 
 Install Ollama and pull a model that fits your machine, for example:
